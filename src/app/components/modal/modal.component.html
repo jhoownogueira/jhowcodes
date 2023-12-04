@@ -1,0 +1,22 @@
+<div class="fixed z-10 inset-0 overflow-y-auto" *ngIf="isOpen">
+  <div
+    class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+  >
+    <!-- Overlay -->
+    <div
+      *ngIf="isOpen"
+      (click)="closeModal(id)"
+      [attr.data-state]="isOpen ? 'open' : 'closed'"
+      class="bg-orion_black opacity-70 data-[state=open]:animate-fade-in-overlay data-[state=closed]:animate-fade-out-overlay fixed inset-0"
+    ></div>
+
+    <!-- Conteúdo do modal -->
+    <div
+      [attr.data-state]="isOpen ? 'open' : 'closed'"
+      (click)="onModalContentClick($event)"
+      class="data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out fixed top-[50%] left-[50%] w-fit translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none"
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
